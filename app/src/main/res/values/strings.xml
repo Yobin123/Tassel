@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Tassel</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="gallery">Gallery</string>
+    <string name="slideshow">Slideshow</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--tabs start-->
+    <string name="tab_gallery">图集</string>
+    <string name="tab_video">视频</string>
+    <!--tabs end-->
+</resources>
