@@ -8,9 +8,11 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.yobin.stee.tassel.R;
@@ -34,9 +36,6 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     @BindView(R.id.drawer_layout_home)
     DrawerLayout drawerLayoutHome;
     private Context mContext = this;
-
-
-    //    private String[] titles = new String[]{getResources().getString(R.string.tab_gallery),"视频"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +44,17 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
         initToolbar();
         initView();
+    }
+
+    //用于接受Bundle数据
+    @Override
+    public void initParams(Bundle bundle) {
+
+    }
+
+    @Override
+    public void widgetClick(View v) {
+
     }
 
     private void initToolbar() {

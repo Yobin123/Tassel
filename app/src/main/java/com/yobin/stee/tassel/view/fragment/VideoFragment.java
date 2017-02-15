@@ -1,5 +1,6 @@
 package com.yobin.stee.tassel.view.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,12 +16,33 @@ import com.yobin.stee.tassel.base.BaseFragment;
 
 public class VideoFragment extends BaseFragment {
     private  VideoFragment fragment;
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+//                             Bundle savedInstanceState) {
+//        // Inflate the layout for this fragment
+//        return inflater.inflate(R.layout.fragment_video, container, false);
+//    }
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_video, container, false);
+    protected int bindLayout() {
+        return R.layout.fragment_video;
     }
+
+    @Override
+    protected void initView(View mContextView) {
+
+    }
+
+    @Override
+    protected void doBusiness(Context mContext) {
+
+    }
+
+    @Override
+    public void widgetClick(View v) {
+
+    }
+
     public  VideoFragment newInstance() {
         if(fragment == null){
             fragment = new VideoFragment();
