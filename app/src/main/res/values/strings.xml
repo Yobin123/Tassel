@@ -15,4 +15,6 @@
     <string name="tab_gallery">图集</string>
     <string name="tab_video">视频</string>
     <!--tabs end-->
+    <string name="load_success">加载成功</string>
+    <string name="load_failure">加载失败</string>
 </resources>

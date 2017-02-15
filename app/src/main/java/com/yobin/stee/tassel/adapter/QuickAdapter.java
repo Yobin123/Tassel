@@ -70,6 +70,7 @@ public abstract class QuickAdapter <T> extends RecyclerView.Adapter<QuickAdapter
 
     public abstract int getLayoutId(int ViewType);
 
+
     @Override
     public VH onCreateViewHolder(ViewGroup parent, int viewType) {
         return VH.get(parent,getLayoutId(viewType));
@@ -87,7 +88,7 @@ public abstract class QuickAdapter <T> extends RecyclerView.Adapter<QuickAdapter
 
     public abstract void convert(VH holder, T data , int position);
 
-    static class VH extends RecyclerView.ViewHolder{
+    public static class VH extends RecyclerView.ViewHolder{
         private SparseArray<View> mViews;
         private View mConvertView;
 
@@ -115,4 +116,10 @@ public abstract class QuickAdapter <T> extends RecyclerView.Adapter<QuickAdapter
             view.setText(value);
         }
     }
+
+    //进行相应的刷新操作
+    public  void setmDatas(List<T> mDatas){
+        this.mDatas = mDatas;
+        notifyDataSetChanged();
+    };
 }

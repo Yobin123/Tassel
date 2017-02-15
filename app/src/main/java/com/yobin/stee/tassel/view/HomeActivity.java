@@ -2,7 +2,6 @@ package com.yobin.stee.tassel.view;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
@@ -123,7 +122,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
      * @return
      */
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(MenuItem item) {
         item.setChecked(true);
         drawerLayoutHome.closeDrawers();
         switch (item.getItemId()) {
