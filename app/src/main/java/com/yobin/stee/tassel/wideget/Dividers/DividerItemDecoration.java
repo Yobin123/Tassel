@@ -1,4 +1,4 @@
-package com.yobin.stee.tassel.wideget;
+package com.yobin.stee.tassel.wideget.Dividers;
 
 /*
  * Copyright (C) 2014 The Android Open Source Project

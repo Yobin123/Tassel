@@ -4,12 +4,13 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.yobin.stee.tassel.utils.LogUtils;
+
+import rx.Subscription;
 
 /**
  * Created by yobin_he on 2017/2/14.
@@ -20,6 +21,9 @@ public abstract class BaseFragment extends Fragment  implements View.OnClickList
     private String APP_NAME;
     protected final String TAG = this.getClass().getSimpleName();
     private View mContextView = null;
+
+
+    protected Subscription subscription;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,13 +64,13 @@ public abstract class BaseFragment extends Fragment  implements View.OnClickList
 
     /**
      * 这是进行findViewById;
+     * @param <T>
      * @param view
      * @param resId
-     * @param <T>
      * @return
      */
     @SuppressWarnings("unchecked")
-    public <T extends View> T $(View view,int resId){
+    public <T extends View> T initResId(View view, int resId){
         return (T) view.findViewById(resId);
     }
 
@@ -95,5 +99,19 @@ public abstract class BaseFragment extends Fragment  implements View.OnClickList
         }
         lastClick = System.currentTimeMillis();
         return true;
+    }
+
+//    这是不是太过共性的，只有在与rxJava相互结合时才可能产生的
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unSubscribe();
+
+    }
+    protected void unSubscribe(){
+        if(subscription != null && !subscription.isUnsubscribed()){
+            subscription.unsubscribe();
+        }
     }
 }

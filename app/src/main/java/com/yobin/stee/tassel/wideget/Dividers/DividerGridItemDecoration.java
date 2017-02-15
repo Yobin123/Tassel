@@ -1,4 +1,4 @@
-package com.yobin.stee.tassel.wideget;
+package com.yobin.stee.tassel.wideget.Dividers;
 
 import android.content.Context;
 import android.content.res.TypedArray;
