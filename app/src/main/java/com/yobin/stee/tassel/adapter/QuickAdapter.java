@@ -119,7 +119,8 @@ public abstract class QuickAdapter <T> extends RecyclerView.Adapter<QuickAdapter
 
     //进行相应的刷新操作
     public  void setmDatas(List<T> mDatas){
-        this.mDatas = mDatas;
+//        this.mDatas = mDatas;
+        this.mDatas.addAll(mDatas);
         notifyDataSetChanged();
     };
 }

@@ -5,6 +5,6 @@ package com.yobin.stee.tassel.utils;
  */
 
 public class Constants {
-    public static String BASE_URL_GALLERY = "http://www.zhuangbi.info/";
+    public static String BASE_URL_GALLERY = "http://gank.io/api/";
 
 }

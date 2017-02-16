@@ -5,10 +5,10 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginBottom="4dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
     android:layout_marginTop="4dp"
-    app:cardCornerRadius="2dp">
+    app:cardCornerRadius="4dp">
+    <!--android:layout_marginStart="8dp"-->
+    <!--android:layout_marginEnd="8dp"-->
     <!--<com.yobin.stee.tassel.wideget.RatioImageView-->
         <!--android:id="@+id/image_rv_gallery"-->
         <!--android:layout_width="match_parent"-->
@@ -23,7 +23,8 @@
         <ImageView
             android:id="@+id/iv_rv_Image"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
             android:contentDescription="@null" />
         <TextView
             android:id="@+id/tv_rv_time"

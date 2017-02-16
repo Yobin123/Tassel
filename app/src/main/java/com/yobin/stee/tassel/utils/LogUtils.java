@@ -9,7 +9,7 @@ import java.util.Locale;
  */
 
 public class LogUtils {
-
+    private static boolean isLogAll = true;
     private static boolean LOGV = true;
     private static boolean LOGD = true;
     private static boolean LOGI = true;
@@ -17,21 +17,21 @@ public class LogUtils {
     private static boolean LOGE = true;
 
     public static void v(String tag, String mess) {
-        if (LOGV) {
+        if (LOGV &&isLogAll) {
             Log.v(tag, mess); }
     }
     public static void d(String tag, String mess) {
-        if (LOGD) {
+        if (LOGD && isLogAll) {
             Log.d(tag, mess); }
     }
     public static void i(String tag, String mess) {
-        if (LOGI) { Log.i(tag, mess); }
+        if (LOGI && isLogAll) { Log.i(tag, mess); }
     }
     public static void w(String tag, String mess) {
-        if (LOGW) { Log.w(tag, mess); }
+        if (LOGW && isLogAll) { Log.w(tag, mess); }
     }
     public static void e(String tag, String mess) {
-        if (LOGE) { Log.e(tag, mess); }
+        if (LOGE && isLogAll) { Log.e(tag, mess); }
     }
 
 
@@ -59,19 +59,19 @@ public class LogUtils {
      * @param mess
      */
     public static void v(String mess) {
-        if (LOGV) { Log.v(getTag(), buildMessage(mess)); }
+        if (LOGV && isLogAll) { Log.v(getTag(), buildMessage(mess)); }
     }
     public static void d(String mess) {
-        if (LOGD) { Log.d(getTag(), buildMessage(mess)); }
+        if (LOGD && isLogAll) { Log.d(getTag(), buildMessage(mess)); }
     }
     public static void i(String mess) {
-        if (LOGI) { Log.i(getTag(), buildMessage(mess)); }
+        if (LOGI && isLogAll) { Log.i(getTag(), buildMessage(mess)); }
     }
     public static void w(String mess) {
-        if (LOGW) { Log.w(getTag(), buildMessage(mess)); }
+        if (LOGW &&isLogAll) { Log.w(getTag(), buildMessage(mess)); }
     }
     public static void e(String mess) {
-        if (LOGE) { Log.e(getTag(), buildMessage(mess)); }
+        if (LOGE && isLogAll) { Log.e(getTag(), buildMessage(mess)); }
     }
 
 

@@ -28,12 +28,13 @@ public class GankBeautyResultToItemsMapper implements Func1<GalleryResult, List<
     public List<Item> call(GalleryResult galleryResult) {
         List<GalleryBeauty> gankBeauties = galleryResult.beautyList;
         List<Item> items = new ArrayList<>(gankBeauties.size());
+
         SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SS'Z'");
         SimpleDateFormat outputFormat = new SimpleDateFormat("yy/MM/dd HH:mm:ss");
         for (GalleryBeauty gankBeauty : gankBeauties) {
             Item item = new Item();
             try {
-                Date date = inputFormat.parse(gankBeauty.createAt);
+                Date date = inputFormat.parse(gankBeauty.createdAt);
                 item.description = outputFormat.format(date);
             } catch (ParseException e) {
                 e.printStackTrace();

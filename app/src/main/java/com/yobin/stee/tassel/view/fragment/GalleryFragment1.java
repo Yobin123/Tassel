@@ -18,6 +18,7 @@ import com.yobin.stee.tassel.beans.Item;
 import com.yobin.stee.tassel.utils.GankBeautyResultToItemsMapper;
 import com.yobin.stee.tassel.utils.GlideUtil;
 import com.yobin.stee.tassel.utils.NetWorkUtils;
+import com.yobin.stee.tassel.view.IGalleryView;
 import com.yobin.stee.tassel.wideget.Dividers.SpacesItemDecoration;
 
 import java.util.ArrayList;
@@ -27,9 +28,12 @@ import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
+/**
+ * Created by yobin_he on 2017/2/16.
+ */
 
-public class GalleryFragment extends BaseFragment {
-    private  GalleryFragment fragment;
+public class GalleryFragment1 extends BaseFragment implements IGalleryView{
+    private  GalleryFragment1 fragment;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView rvGallery;
     private List<Item> allList = new ArrayList<>();
@@ -192,15 +196,7 @@ public class GalleryFragment extends BaseFragment {
 
     }
 
-    private int getMaxElem(int[] arr) {
-        int size = arr.length;
-        int maxVal = Integer.MIN_VALUE;
-        for (int i = 0; i < size; i++) {
-            if(arr[i] > maxVal)
-                maxVal = arr[i];
-        }
-        return maxVal;
-    }
+  
 
     /**
      *进行加载数据
@@ -267,13 +263,36 @@ public class GalleryFragment extends BaseFragment {
      * 碎片的单例模式
      * @return
      */
-    public  GalleryFragment newInstance() {
+    public GalleryFragment1 newInstance() {
         if(fragment == null){
-            fragment = new GalleryFragment();
+            fragment = new GalleryFragment1();
         }
-        return fragment;
+      return fragment;
     }
 
 
+    @Override
+    public void toast(String msg, int requestTag) {
 
+    }
+
+    @Override
+    public void showProgress(int requestTag) {
+
+    }
+
+    @Override
+    public void hideProgress(int requestTag) {
+
+    }
+
+    @Override
+    public void loadDataSuccess(List<Item> data, int RequestTag) {
+
+    }
+
+    @Override
+    public void loadDataError(Throwable e, int requestTag) {
+
+    }
 }
