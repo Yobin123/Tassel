@@ -2,6 +2,7 @@ package com.yobin.stee.tassel.base;
 
 /**
  * Created by yobin_he on 2017/2/16.
+ * 此处泛型是相应的IBaseView
  */
 
 public interface IBaseView<T> {

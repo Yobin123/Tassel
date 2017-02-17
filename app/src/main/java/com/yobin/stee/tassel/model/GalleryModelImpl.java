@@ -28,7 +28,8 @@ public class GalleryModelImpl extends BaseModel{
     }
 
     public void loadGalleryInfo(int page, final IBaseRequestCallBack<List<Item>> callBack, final int requestTag){
-            galleryApi.getBeauties(10,page)
+        //从相应的服务器获取相应的数据
+        galleryApi.getBeauties(10,page)
                     .map(GankBeautyResultToItemsMapper.getInstance())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -49,5 +50,6 @@ public class GalleryModelImpl extends BaseModel{
                             }
                         }
                     });
+
     }
 }

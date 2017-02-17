@@ -15,6 +15,7 @@ import com.yobin.stee.tassel.R;
 import com.yobin.stee.tassel.adapter.QuickAdapter;
 import com.yobin.stee.tassel.base.BaseFragment;
 import com.yobin.stee.tassel.beans.Item;
+import com.yobin.stee.tassel.presenter.GalleryPresenterImpl;
 import com.yobin.stee.tassel.utils.GankBeautyResultToItemsMapper;
 import com.yobin.stee.tassel.utils.GlideUtil;
 import com.yobin.stee.tassel.utils.NetWorkUtils;
@@ -42,6 +43,8 @@ public class GalleryFragment1 extends BaseFragment implements IGalleryView{
     private int page = 1;
     private static final int PRELOAD_SIZE = 6;
     private boolean mIsFirstTimeTouchBottom = true;
+    //初始化代理对象
+    private GalleryPresenterImpl galleryPresenter;
 //    private Handler handler = new Handler(){
 //        @Override
 //        public void handleMessage(Message msg) {
@@ -75,7 +78,11 @@ public class GalleryFragment1 extends BaseFragment implements IGalleryView{
         mSwipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
                 android.R.color.holo_red_light,android.R.color.holo_orange_light);
 
-        loadPage(mContext,page);
+//        loadPage(mContext,page);
+        galleryPresenter = new GalleryPresenterImpl(this,mContext);
+
+        galleryPresenter.getGalleryInfo(0,0);
+
         adapter = new QuickAdapter<Item>(allList) {
             @Override
             public int getLayoutId(int ViewType) {
@@ -176,7 +183,8 @@ public class GalleryFragment1 extends BaseFragment implements IGalleryView{
                     if(!mIsFirstTimeTouchBottom){
                         mSwipeRefreshLayout.setRefreshing(true);
                         page += 1;
-                        loadPage(mContext,page);
+//                        loadPage(mContext,page);
+                        galleryPresenter.getGalleryInfo(page,0);
                     }else {
                         mIsFirstTimeTouchBottom = false;
                     }
@@ -196,7 +204,7 @@ public class GalleryFragment1 extends BaseFragment implements IGalleryView{
 
     }
 
-  
+
 
     /**
      *进行加载数据
@@ -257,6 +265,11 @@ public class GalleryFragment1 extends BaseFragment implements IGalleryView{
             },3000);
         }
     }
+    public void showSwipeRefresh(final  SwipeRefreshLayout view){
+        if(view !=null && !view.isRefreshing()){
+            view.setRefreshing(true);
+        }
+    }
 
 
     /**
@@ -278,16 +291,22 @@ public class GalleryFragment1 extends BaseFragment implements IGalleryView{
 
     @Override
     public void showProgress(int requestTag) {
-
+        showSwipeRefresh(mSwipeRefreshLayout);
     }
 
     @Override
     public void hideProgress(int requestTag) {
-
+          closeSwipeRefresh(mSwipeRefreshLayout);
     }
 
     @Override
     public void loadDataSuccess(List<Item> data, int RequestTag) {
+//        allList = data;
+        unSubscribe();
+        adapter.setmDatas(data);
+        if (data!=null){
+            closeSwipeRefresh(mSwipeRefreshLayout);
+        }
 
     }
 

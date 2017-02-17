@@ -7,7 +7,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,7 +16,7 @@ import android.widget.Toast;
 import com.yobin.stee.tassel.R;
 import com.yobin.stee.tassel.adapter.ViewPagerAdapter;
 import com.yobin.stee.tassel.base.BaseActivity;
-import com.yobin.stee.tassel.view.fragment.GalleryFragment;
+import com.yobin.stee.tassel.view.fragment.GalleryFragment1;
 import com.yobin.stee.tassel.view.fragment.VideoFragment;
 
 import butterknife.BindView;
@@ -69,7 +68,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         navViewHome.setNavigationItemSelectedListener(this);
 
         //实例化相应的Fragment对象
-        GalleryFragment galleryFragment = new GalleryFragment().newInstance();
+        GalleryFragment1 galleryFragment = new GalleryFragment1().newInstance();
         VideoFragment videoFragment = new VideoFragment().newInstance();
 
         //进行相应的添加Fragment

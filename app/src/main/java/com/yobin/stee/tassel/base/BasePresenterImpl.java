@@ -5,7 +5,8 @@ package com.yobin.stee.tassel.base;
  */
 
 public class BasePresenterImpl<T extends IBaseView,V> implements IBasePresenter,IBaseRequestCallBack<V> {
-   public IBaseView iView;
+
+    private IBaseView iView;
 
    public BasePresenterImpl(T view){
        this.iView = view;

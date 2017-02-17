@@ -37,6 +37,7 @@ public class RetrofitManager {
     //查询网络的Cache-Control设置，头部Cache-Control设为max-age=0时则不会使用缓存而请求服务器
     public static final String CACHE_CONTROL_NETWORK = "max-age=0";
     private static OkHttpClient mOkHttpClient;
+    private static OkHttpClient mOkHttpClient1 = new OkHttpClient();
 
     public final GalleryApi galleryApi;
 
@@ -48,10 +49,10 @@ public class RetrofitManager {
     }
 
     private RetrofitManager(){
-        initOkHttpClient();
+//        initOkHttpClient();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL_GALLERY)
-                .client(mOkHttpClient)
+                .client(mOkHttpClient1)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
