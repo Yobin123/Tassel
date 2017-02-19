@@ -18,7 +18,9 @@ import com.yobin.stee.tassel.beans.Item;
 import com.yobin.stee.tassel.presenter.GalleryPresenterImpl;
 import com.yobin.stee.tassel.utils.GankBeautyResultToItemsMapper;
 import com.yobin.stee.tassel.utils.GlideUtil;
+import com.yobin.stee.tassel.utils.LogUtils;
 import com.yobin.stee.tassel.utils.NetWorkUtils;
+import com.yobin.stee.tassel.view.GalleryDetailActivity;
 import com.yobin.stee.tassel.view.IGalleryView;
 import com.yobin.stee.tassel.wideget.Dividers.SpacesItemDecoration;
 
@@ -37,6 +39,7 @@ public class GalleryFragment1 extends BaseFragment implements IGalleryView{
     private  GalleryFragment1 fragment;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView rvGallery;
+
     private List<Item> allList = new ArrayList<>();
     private QuickAdapter<Item> adapter = null;
     private int lastVisibleItemPosition = 0;
@@ -45,6 +48,7 @@ public class GalleryFragment1 extends BaseFragment implements IGalleryView{
     private boolean mIsFirstTimeTouchBottom = true;
     //初始化代理对象
     private GalleryPresenterImpl galleryPresenter;
+    private List<String> imgList = new ArrayList<>();
 //    private Handler handler = new Handler(){
 //        @Override
 //        public void handleMessage(Message msg) {
@@ -90,7 +94,7 @@ public class GalleryFragment1 extends BaseFragment implements IGalleryView{
             }
 
             @Override
-            public void convert(QuickAdapter.VH holder, Item data, int position) {
+            public void convert(QuickAdapter.VH holder, final Item data, final int position) {
                 final ImageView mImageView = holder.getView(R.id.iv_rv_Image);
                 TextView mTextView = holder.getView(R.id.tv_rv_time);
                 ViewGroup.LayoutParams lp;
@@ -108,6 +112,23 @@ public class GalleryFragment1 extends BaseFragment implements IGalleryView{
 //                        .centerCrop()
 //                        .into(mImageView);
                 GlideUtil.getInstance().loadImage(mContext,mImageView,data.imageUrl,true);
+
+
+                mImageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                            imgList.clear();
+                            for (int i = 0; i < allList.size(); i++) {
+                                if(allList.size() / 10 == (i / 10 + 1)){
+                                    imgList.add(allList.get(i).imageUrl);
+                                }
+                            }
+                        LogUtils.i("---->>imgList" + imgList.size());
+                        Toast.makeText(mContext, "这是第" + position % 10 + "个", Toast.LENGTH_SHORT).show();
+
+                        GalleryDetailActivity.actionStart(getContext(),imgList,(position % 10));
+                    }
+                });
             }
 
             @Override
