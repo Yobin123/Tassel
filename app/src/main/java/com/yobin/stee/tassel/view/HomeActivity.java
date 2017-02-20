@@ -75,6 +75,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(galleryFragment, getResources().getString(R.string.tab_gallery));
         adapter.addFragment(videoFragment, getResources().getString(R.string.tab_video));
+
         viewpagerContentHome.setAdapter(adapter);
         tabLayoutHome.setupWithViewPager(viewpagerContentHome);
 

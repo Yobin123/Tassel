@@ -26,12 +26,9 @@ package com.yobin.stee.tassel.adapter;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
-import android.support.v7.widget.LinearLayoutCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.bm.library.PhotoView;
 import com.yobin.stee.tassel.R;
@@ -73,8 +70,8 @@ public class GalleryPageAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_gallery_img, null);
         PhotoView imageView = (PhotoView) view.findViewById(R.id.iv_vg_gallery);
+        imageView.enable();
         GlideUtil.getInstance().loadImage(mContext, imageView, imgList.get(position), true);
-        imageView.setEnabled(true);
         container.addView(view);
         return view;
     }

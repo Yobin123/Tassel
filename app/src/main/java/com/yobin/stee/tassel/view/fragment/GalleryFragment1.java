@@ -119,7 +119,7 @@ public class GalleryFragment1 extends BaseFragment implements IGalleryView{
                     public void onClick(View v) {
                             imgList.clear();
                             for (int i = 0; i < allList.size(); i++) {
-                                if(allList.size() / 10 == (i / 10 + 1)){
+                                if(allList.size() / 10 == (i / 10 + 1) && allList.size() / 10 == (position / 10 + 1)){
                                     imgList.add(allList.get(i).imageUrl);
                                 }
                             }

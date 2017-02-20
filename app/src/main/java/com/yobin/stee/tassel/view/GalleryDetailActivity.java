@@ -26,18 +26,28 @@ package com.yobin.stee.tassel.view;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.Toast;
 
 import com.yobin.stee.tassel.R;
 import com.yobin.stee.tassel.adapter.GalleryPageAdapter;
 import com.yobin.stee.tassel.base.BaseActivity;
+import com.yobin.stee.tassel.interfaces.ImageDownLoadCallback;
+import com.yobin.stee.tassel.service.DownLoadImageService;
 import com.yobin.stee.tassel.utils.LogUtils;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,6 +69,25 @@ public class GalleryDetailActivity extends BaseActivity {
     private List<String> imgList;
     private int mPosition;
 
+    private boolean mIsHidden = false;
+    private Context mContext = this;
+    public static final int MSG_SAVE = 0;
+    public static final int MSG_ERROR = 1;
+    public static final int DELAY_TIME = 2000;
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+          switch (msg.what){
+              case MSG_SAVE:
+                  Toast.makeText(mContext, getResources().getString(R.string.save_success), Toast.LENGTH_SHORT).show();
+                  break;
+              case MSG_ERROR:
+                  Toast.makeText(mContext, getResources().getString(R.string.save_failure), Toast.LENGTH_SHORT).show();
+                  break;
+          }
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +96,6 @@ public class GalleryDetailActivity extends BaseActivity {
         initExtra();
         initToolbar();
         doBusiness();
-
     }
 
 
@@ -81,6 +109,7 @@ public class GalleryDetailActivity extends BaseActivity {
         setSupportActionBar(toolbarDetailGallery);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         toolbarDetailGallery.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +127,9 @@ public class GalleryDetailActivity extends BaseActivity {
         imgList = getIntent().getExtras().getStringArrayList("imgList");
     }
 
+    /**
+     * 进行业务的处理
+     */
     private void doBusiness() {
         LogUtils.i("--->>imgList" + imgList.toString() );
         GalleryPageAdapter adapter = new GalleryPageAdapter(this,imgList);
@@ -121,8 +153,28 @@ public class GalleryDetailActivity extends BaseActivity {
 
             }
         });
+        vgDetailGallery.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        hideOrShowToolbar();
+                        break;
+                }
+                return true;
+            }
+        });
 
 
+
+    }
+
+    private void hideOrShowToolbar() {
+        appBarLayout.animate()
+                .translationY(mIsHidden ? 0 : -appBarLayout.getHeight())
+                .setInterpolator(new DecelerateInterpolator(2))
+                .start();
+        mIsHidden = !mIsHidden;
     }
 
     @Override
@@ -135,6 +187,65 @@ public class GalleryDetailActivity extends BaseActivity {
     public void widgetClick(View v) {
         int viewId = v.getId();
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_gallery,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id){
+            case R.id.action_share:
+                Toast.makeText(this, "你点了分享的按钮", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.action_save:
+//                if(mPosition == imgList.get())
+                if(imgList.get(mPosition) != null){
+                    saveImageToGallery(imgList.get(mPosition));
+                }
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    /**
+     * 将相应的图片保存到相应的图片集中
+     */
+    private void saveImageToGallery(String url) {
+        LogUtils.i("-----url::",url);
+        DownLoadImageService service = new DownLoadImageService(getApplicationContext(), url, new ImageDownLoadCallback() {
+            @Override
+            public void onDownLoadSuccess(File file) {
+
+            }
+
+            @Override
+            public void onDownLoadSuccess(Bitmap bitmap) {
+                //在这里执行图片保存的方法
+                Message message = new Message();
+                message.what = MSG_SAVE;
+                handler.sendMessageDelayed(message,DELAY_TIME);
+            }
+
+            @Override
+            public void onDownLoadFailed() {
+                //图片保存失败
+                Message message = new Message();
+                message.what = MSG_ERROR;
+                handler.sendMessageDelayed(message,DELAY_TIME);
+            }
+        });
+        new Thread(service).start();
     }
 
     /**
@@ -150,4 +261,5 @@ public class GalleryDetailActivity extends BaseActivity {
         intent.putExtra("position", position);
         context.startActivity(intent);
     }
+
 }
