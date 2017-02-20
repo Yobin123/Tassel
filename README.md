@@ -1,7 +1,8 @@
 # Tassel
  #https://github.com/Yobin123/Tassel 这个用于杂糅app
 
- #http://www.jianshu.com/p/4390f4fe19b3 这个可以用于日报  
+ #http://www.jianshu.com/p/4390f4fe19b3
+ #https://github.com/laucherish/PureZhihuD 这个可以用于日报  
  #http://gank.io/download  这个可以用图片展示或者用于技术的补充
  #https://github.com/RickyLee28/Living 用于视频播放源
  #http://blog.csdn.net/lizhaowei213/article/details/50083835 在线音乐播放器
