@@ -153,17 +153,17 @@ public class GalleryDetailActivity extends BaseActivity {
 
             }
         });
-        vgDetailGallery.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()){
-                    case MotionEvent.ACTION_DOWN:
-                        hideOrShowToolbar();
-                        break;
-                }
-                return true;
-            }
-        });
+//        vgDetailGallery.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                switch (event.getAction()){
+//                    case MotionEvent.ACTION_DOWN:
+//                        hideOrShowToolbar();
+//                        break;
+//                }
+//                return true;
+//            }
+//        });
 
 
 

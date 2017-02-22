@@ -32,9 +32,15 @@ import android.view.ViewGroup;
 
 import com.bm.library.PhotoView;
 import com.yobin.stee.tassel.R;
+import com.yobin.stee.tassel.base.BaseActivity;
+import com.yobin.stee.tassel.base.MyApplication;
 import com.yobin.stee.tassel.utils.GlideUtil;
+import com.yobin.stee.tassel.view.HomeActivity;
 
 import java.util.List;
+
+
+
 
 /**
  * Created by Yobin_He on 2017/2/19.
@@ -72,6 +78,8 @@ public class GalleryPageAdapter extends PagerAdapter {
         PhotoView imageView = (PhotoView) view.findViewById(R.id.iv_vg_gallery);
         imageView.enable();
         GlideUtil.getInstance().loadImage(mContext, imageView, imgList.get(position), true);
+//        PhotoViewAttacher mAttacher = new PhotoViewAttacher(imageView);
+//        mAttacher.setOnViewTapListener((PhotoViewAttacher.OnViewTapListener) mContext);
         container.addView(view);
         return view;
     }

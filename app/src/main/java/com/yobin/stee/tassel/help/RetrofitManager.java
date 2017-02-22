@@ -49,7 +49,7 @@ public class RetrofitManager {
     }
 
     private RetrofitManager(){
-//        initOkHttpClient();
+        initOkHttpClient();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL_GALLERY)
                 .client(mOkHttpClient1)
