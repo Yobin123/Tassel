@@ -17,6 +17,7 @@ import com.yobin.stee.tassel.R;
 import com.yobin.stee.tassel.adapter.ViewPagerAdapter;
 import com.yobin.stee.tassel.base.BaseActivity;
 import com.yobin.stee.tassel.view.fragment.GalleryFragment1;
+import com.yobin.stee.tassel.view.fragment.NewsFragment;
 import com.yobin.stee.tassel.view.fragment.VideoFragment;
 
 import butterknife.BindView;
@@ -70,11 +71,13 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         //实例化相应的Fragment对象
         GalleryFragment1 galleryFragment = new GalleryFragment1().newInstance();
         VideoFragment videoFragment = new VideoFragment().newInstance();
+        NewsFragment newsFragment = new NewsFragment().newInstance();
 
         //进行相应的添加Fragment
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(galleryFragment, getResources().getString(R.string.tab_gallery));
         adapter.addFragment(videoFragment, getResources().getString(R.string.tab_video));
+        adapter.addFragment(newsFragment,getResources().getString(R.string.tab_news));
 
         viewpagerContentHome.setAdapter(adapter);
         tabLayoutHome.setupWithViewPager(viewpagerContentHome);

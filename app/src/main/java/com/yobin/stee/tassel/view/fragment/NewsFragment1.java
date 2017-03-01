@@ -7,9 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.yalantis.phoenix.PullToRefreshView;
@@ -22,20 +20,20 @@ import com.yobin.stee.tassel.beans.NewsList;
 import com.yobin.stee.tassel.db.dao.NewDao;
 import com.yobin.stee.tassel.helper.RetrofitManager;
 import com.yobin.stee.tassel.utils.NetUtil;
+import com.yobin.stee.tassel.view.interfaces.INewsView;
 import com.yobin.stee.tassel.wideget.AutoLoadOnScrollListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action0;
 import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
-public class NewsFragment extends BaseNewsFragment implements PullToRefreshView.OnRefreshListener{
+public class NewsFragment1 extends BaseNewsFragment implements PullToRefreshView.OnRefreshListener ,INewsView{
 
     public static final String EXTRA_POSITION = "position";
     public static final String EXTRA_SCROLL = "scroll";
@@ -287,13 +285,13 @@ public class NewsFragment extends BaseNewsFragment implements PullToRefreshView.
 
 
 
-    public NewsFragment() {
+    public NewsFragment1() {
 
     }
 
     //实现相应的数据化
-    public static NewsFragment newInstance() {
-        NewsFragment fragment = new NewsFragment();
+    public static NewsFragment1 newInstance() {
+        NewsFragment1 fragment = new NewsFragment1();
 //        Bundle bundle = new Bundle();
 //        bundle.putInt(EXTRA_POSITION, position);
 //        bundle.putInt(EXTRA_SCROLL, scroll);
@@ -302,13 +300,9 @@ public class NewsFragment extends BaseNewsFragment implements PullToRefreshView.
         return fragment;
     }
 
-    public void showProgress() {
-        mPbLoading.setVisibility(View.VISIBLE);
-    }
 
-    public void hideProgress() {
-        mPbLoading.setVisibility(View.GONE);
-    }
+
+
 
 
     class RecyclerViewListener extends RecyclerView.OnScrollListener {
@@ -348,5 +342,32 @@ public class NewsFragment extends BaseNewsFragment implements PullToRefreshView.
     public void onRefresh() {
         //用于加载最新数据
         loadLatestNews();
+    }
+
+
+
+    public void showProgress() {
+        mPbLoading.setVisibility(View.VISIBLE);
+    }
+
+
+    @Override
+    public void hideProgress() {
+        mPbLoading.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showLoadFailMsg() {
+
+    }
+
+    @Override
+    public void loadLatestData(List<News> list) {
+
+    }
+
+    @Override
+    public void showLoadBeforeData(List<News> list) {
+
     }
 }

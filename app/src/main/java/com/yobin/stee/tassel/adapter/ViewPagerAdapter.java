@@ -1,6 +1,8 @@
 package com.yobin.stee.tassel.adapter;
 
 
+
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -18,6 +20,13 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
     }
+
+//    @Override
+//    public Fragment getItem(int position) {
+//        return fragmentList.get(position);
+//    }
+//
+
 
     @Override
     public Fragment getItem(int position) {

@@ -3,6 +3,7 @@ package com.yobin.stee.tassel.base;
 import android.app.Application;
 import android.content.Context;
 
+import com.yobin.stee.tassel.db.dao.NewDao;
 import com.yobin.stee.tassel.utils.AppContextUtil;
 
 /**
@@ -14,12 +15,14 @@ public class MyApplication extends Application {
     private static Context mApplicationContext;
     public static boolean isDebug = true;
     public static String APP_NAME;
+    public static NewDao dao;
     @Override
     public void onCreate() {
         super.onCreate();
         AppContextUtil.init(this);
         mApplicationContext = this;
         APP_NAME = this.getClass().getSimpleName();
+        dao = new NewDao(getContext());
     }
     //获取ApplicationContext;
     public static Context getContext(){

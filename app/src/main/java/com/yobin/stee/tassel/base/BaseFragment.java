@@ -1,8 +1,10 @@
 package com.yobin.stee.tassel.base;
 
+
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +18,7 @@ import rx.Subscription;
  * Created by yobin_he on 2017/2/14.
  */
 
-public abstract class BaseFragment extends Fragment  implements View.OnClickListener{
+public abstract class BaseFragment extends Fragment implements View.OnClickListener{
     private boolean isDebug;
     private String APP_NAME;
     protected final String TAG = this.getClass().getSimpleName();

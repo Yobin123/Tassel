@@ -15,7 +15,7 @@ import com.yobin.stee.tassel.R;
 import com.yobin.stee.tassel.adapter.QuickAdapter;
 import com.yobin.stee.tassel.base.BaseFragment;
 import com.yobin.stee.tassel.beans.Item;
-import com.yobin.stee.tassel.presenter.GalleryPresenterImpl;
+import com.yobin.stee.tassel.presenter.gallery.GalleryPresenterImpl;
 import com.yobin.stee.tassel.utils.GankBeautyResultToItemsMapper;
 import com.yobin.stee.tassel.utils.GlideUtil;
 import com.yobin.stee.tassel.utils.LogUtils;

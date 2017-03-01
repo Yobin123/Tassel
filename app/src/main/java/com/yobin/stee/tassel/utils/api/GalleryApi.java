@@ -1,7 +1,7 @@
 package com.yobin.stee.tassel.utils.api;
 
 import com.yobin.stee.tassel.beans.GalleryResult;
-import com.yobin.stee.tassel.help.RetrofitManager;
+import com.yobin.stee.tassel.helper.RetrofitManager;
 
 import retrofit2.http.GET;
 import retrofit2.http.Headers;

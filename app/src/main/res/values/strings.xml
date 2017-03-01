@@ -8,17 +8,58 @@
     <string name="gallery">Gallery</string>
     <string name="slideshow">Slideshow</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--tabs start-->
     <string name="tab_gallery">图集</string>
     <string name="tab_video">视频</string>
+    <string name="tab_news">知乎</string>
     <!--tabs end-->
+
     <string name="load_success">加载成功</string>
     <string name="load_failure">加载失败</string>
     <string name="action_share">分享</string>
     <string name="action_save">保存</string>
     <string name="save_success">保存图片成功</string>
     <string name="save_failure">保存图片失败</string>
+
+    <string name="refresh">刷新</string>
+    //加载不成功是出现的内容
+    <string name="no_news">没有内容，请重试</string>
+    <string name="load_fail">加载失败，请重试</string>
+    <string name="load_more_fail">加载更多失败，请重试</string>
+    <string name="test_list_date">3月20日 星期一</string>
+
+    <string name="test_title">新闻标题新闻标题新闻标题新闻标题新闻标题新闻标题，不忘初心，方得始终</string>
+    <string name="test_source">图片来源</string>
+
+    <!--&lt;!&ndash;日间模式&ndash;&gt;-->
+    <!--<color name="theme_Day">#3F51B5</color>-->
+    <!--<color name="textColorFirst_Day">#DD000000</color>-->
+    <!--<color name="textColorSecond_Day">#89000000</color>-->
+    <!--<color name="textColorThird_Day">#42000000</color>-->
+    <!--<color name="background_Day">#FFFFFF</color>-->
+    <!--&lt;!&ndash;Toolbar字体颜色  &ndash;&gt;-->
+    <!--<color name="toolbar_Text_Color_Day">#DDFFFFFF</color>-->
+    <!--&lt;!&ndash;Toolbar-Menu字体颜色&ndash;&gt;-->
+    <!--<color name="toolbar_Menu_Text_Color_Day">#DD000000</color>-->
+    <!--&lt;!&ndash;Toolbar背景  &ndash;&gt;-->
+    <!--<color name="topbar_Background_Day">#3F51B5</color>-->
+    <!--&lt;!&ndash;主页item背景色&ndash;&gt;-->
+    <!--<color name="main_item_background_Day">#FFFFFF</color>-->
+
+    <!--&lt;!&ndash;夜间模式&ndash;&gt;-->
+    <!--<color name="theme_Night">#493518</color>-->
+    <!--<color name="textColorFirst_Night">#DDFFFFFF</color>-->
+    <!--<color name="textColorSecond_Night">#89FFFFFF</color>-->
+    <!--<color name="textColorThird_Night">#42FFFFFF</color>-->
+    <!--<color name="background_Night">#FF424242</color>-->
+    <!--&lt;!&ndash;Toolbar字体颜色  &ndash;&gt;-->
+    <!--<color name="toolbar_Text_Color_Night">#DDFFFFFF</color>-->
+    <!--&lt;!&ndash;Toolbar-Menu字体颜色&ndash;&gt;-->
+    <!--<color name="toolbar_Menu_Text_Color_Night">#DD000000</color>-->
+    <!--&lt;!&ndash;Toolbar背景  &ndash;&gt;-->
+    <!--<color name="topbar_Background_Night">#212121</color>-->
+    <!--<color name="colorPrimaryDark_Night">#DD000000</color>-->
+    <!--&lt;!&ndash;主页item背景色&ndash;&gt;-->
+    <!--<color name="main_item_background_Night">#616161</color>-->
 </resources>

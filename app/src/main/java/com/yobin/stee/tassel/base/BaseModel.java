@@ -1,6 +1,6 @@
 package com.yobin.stee.tassel.base;
 
-import com.yobin.stee.tassel.help.RetrofitManager;
+import com.yobin.stee.tassel.helper.RetrofitManager;
 
 /**
  * Created by yobin_he on 2017/2/16.
